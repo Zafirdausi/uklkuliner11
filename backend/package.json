@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Backend API Project Kuliner UKL",
   "scripts": {
-     "build": "node ./node_modules/@nestjs/cli/bin/nest.js build",
-    "start:prod": "node dist/main",
-    "start": "nest start",
+  "build": "node ./node_modules/@nestjs/cli/bin/nest.js build",
+  "start": "node dist/main",
+  "start:prod": "node dist/main",
     "start:dev": "nest start --watch",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
