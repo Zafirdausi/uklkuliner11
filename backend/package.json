@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend API Project Kuliner UKL",
   "scripts": {
-    "build": "./node_modules/.bin/nest build",
+     "build": "node ./node_modules/@nestjs/cli/bin/nest.js build",
     "start:prod": "node dist/main",
     "start": "nest start",
     "start:dev": "nest start --watch",
