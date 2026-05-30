@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  DONE
+  CANCELLED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+}
+
+enum PaymentMethod {
+  CASH
+  TRANSFER
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(CUSTOMER)
+  createdAt DateTime @default(now())
+  orders    Order[]
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  menus       Menu[]
+}
+
+model Menu {
+  id          Int         @id @default(autoincrement())
+  categoryId  Int
+  name        String
+  description String?
+  price       Float
+  image       String?
+  stock       Int         @default(0)
+  isAvailable Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  category    Category    @relation(fields: [categoryId], references: [id])
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id            Int           @id @default(autoincrement())
+  userId        Int
+  totalPrice    Float
+  status        OrderStatus   @default(PENDING)
+  paymentStatus PaymentStatus @default(UNPAID)
+  createdAt     DateTime      @default(now())
+  user          User          @relation(fields: [userId], references: [id])
+  orderItems    OrderItem[]
+  payment       Payment?
+}
+
+model OrderItem {
+  id       Int   @id @default(autoincrement())
+  orderId  Int
+  menuId   Int
+  quantity Int
+  price    Float
+  subtotal Float
+  order    Order @relation(fields: [orderId], references: [id])
+  menu     Menu  @relation(fields: [menuId], references: [id])
+}
+
+model Payment {
+  id      Int           @id @default(autoincrement())
+  orderId Int           @unique
+  amount  Float
+  method  PaymentMethod
+  status  PaymentStatus @default(UNPAID)
+  paidAt  DateTime?
+  order   Order         @relation(fields: [orderId], references: [id])
+}
