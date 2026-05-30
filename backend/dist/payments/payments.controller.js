@@ -32,6 +32,10 @@ let PaymentsController = class PaymentsController {
 exports.PaymentsController = PaymentsController;
 __decorate([
     (0, common_1.Post)(':orderId'),
+    (0, swagger_1.ApiOperation)({ summary: 'Create a payment for an order' }),
+    (0, swagger_1.ApiCreatedResponse)({ description: 'Payment created successfully.' }),
+    (0, swagger_1.ApiBadRequestResponse)({ description: 'Invalid payment data.' }),
+    (0, swagger_1.ApiUnauthorizedResponse)({ description: 'Authentication required.' }),
     __param(0, (0, common_1.Param)('orderId', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -40,6 +44,9 @@ __decorate([
 ], PaymentsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(':orderId'),
+    (0, swagger_1.ApiOperation)({ summary: 'Get payment details for an order' }),
+    (0, swagger_1.ApiOkResponse)({ description: 'Payment details returned successfully.' }),
+    (0, swagger_1.ApiNotFoundResponse)({ description: 'Payment not found for given order.' }),
     __param(0, (0, common_1.Param)('orderId', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),

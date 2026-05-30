@@ -53,8 +53,8 @@ export declare class OrdersService {
             id: number;
             status: import(".prisma/client").$Enums.PaymentStatus;
             orderId: number;
-            method: import(".prisma/client").$Enums.PaymentMethod;
             amount: number;
+            method: import(".prisma/client").$Enums.PaymentMethod;
             paidAt: Date | null;
         };
         orderItems: ({
@@ -90,8 +90,8 @@ export declare class OrdersService {
             id: number;
             status: import(".prisma/client").$Enums.PaymentStatus;
             orderId: number;
-            method: import(".prisma/client").$Enums.PaymentMethod;
             amount: number;
+            method: import(".prisma/client").$Enums.PaymentMethod;
             paidAt: Date | null;
         };
         orderItems: ({
@@ -135,8 +135,8 @@ export declare class OrdersService {
             id: number;
             status: import(".prisma/client").$Enums.PaymentStatus;
             orderId: number;
-            method: import(".prisma/client").$Enums.PaymentMethod;
             amount: number;
+            method: import(".prisma/client").$Enums.PaymentMethod;
             paidAt: Date | null;
         };
         orderItems: ({

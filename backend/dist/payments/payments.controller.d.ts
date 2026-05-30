@@ -9,8 +9,8 @@ export declare class PaymentsController {
             id: number;
             status: import(".prisma/client").$Enums.PaymentStatus;
             orderId: number;
-            method: import(".prisma/client").$Enums.PaymentMethod;
             amount: number;
+            method: import(".prisma/client").$Enums.PaymentMethod;
             paidAt: Date | null;
         };
     }>;
@@ -27,8 +27,8 @@ export declare class PaymentsController {
         id: number;
         status: import(".prisma/client").$Enums.PaymentStatus;
         orderId: number;
-        method: import(".prisma/client").$Enums.PaymentMethod;
         amount: number;
+        method: import(".prisma/client").$Enums.PaymentMethod;
         paidAt: Date | null;
     }>;
 }

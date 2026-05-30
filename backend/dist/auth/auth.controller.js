@@ -31,6 +31,9 @@ let AuthController = class AuthController {
 exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('register'),
+    (0, swagger_1.ApiOperation)({ summary: 'Register a new user' }),
+    (0, swagger_1.ApiCreatedResponse)({ description: 'User registered successfully.' }),
+    (0, swagger_1.ApiBadRequestResponse)({ description: 'Invalid registration data.' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_dto_1.RegisterDto]),
@@ -38,6 +41,9 @@ __decorate([
 ], AuthController.prototype, "register", null);
 __decorate([
     (0, common_1.Post)('login'),
+    (0, swagger_1.ApiOperation)({ summary: 'Authenticate a user and return a JWT token' }),
+    (0, swagger_1.ApiOkResponse)({ description: 'User logged in successfully.' }),
+    (0, swagger_1.ApiBadRequestResponse)({ description: 'Invalid login credentials.' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [auth_dto_1.LoginDto]),

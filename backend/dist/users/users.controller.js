@@ -35,6 +35,9 @@ let UsersController = class UsersController {
 exports.UsersController = UsersController;
 __decorate([
     (0, common_1.Get)('profile'),
+    (0, swagger_1.ApiOperation)({ summary: 'Get the authenticated user profile' }),
+    (0, swagger_1.ApiOkResponse)({ description: 'Authenticated user profile returned successfully.' }),
+    (0, swagger_1.ApiUnauthorizedResponse)({ description: 'Authentication credentials were missing or invalid.' }),
     __param(0, (0, get_user_decorator_1.GetUser)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -44,6 +47,9 @@ __decorate([
     (0, common_1.UseGuards)(roles_guard_1.RolesGuard),
     (0, roles_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Get all users (admin only)' }),
+    (0, swagger_1.ApiOkResponse)({ description: 'List of users returned successfully.' }),
+    (0, swagger_1.ApiForbiddenResponse)({ description: 'Admin role required to access this endpoint.' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)

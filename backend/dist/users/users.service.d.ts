@@ -28,21 +28,21 @@ export declare class UsersService {
         name: string;
         email: string;
         role: import(".prisma/client").$Enums.Role;
-        createdAt: Date;
         id: number;
+        createdAt: Date;
     }>;
     findAll(): Promise<{
         name: string;
         email: string;
         role: import(".prisma/client").$Enums.Role;
-        createdAt: Date;
         id: number;
+        createdAt: Date;
     }[]>;
     findOne(id: number): Promise<{
         name: string;
         email: string;
         role: import(".prisma/client").$Enums.Role;
-        createdAt: Date;
         id: number;
+        createdAt: Date;
     }>;
 }
