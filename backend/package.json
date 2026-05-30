@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend API Project Kuliner UKL",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "nest build",
     "start:prod": "node dist/main",
     "start": "nest start",
     "start:dev": "nest start --watch",
