@@ -46,6 +46,7 @@ __decorate([
     (0, common_1.Get)(':orderId'),
     (0, swagger_1.ApiOperation)({ summary: 'Get payment details for an order' }),
     (0, swagger_1.ApiOkResponse)({ description: 'Payment details returned successfully.' }),
+    (0, swagger_1.ApiUnauthorizedResponse)({ description: 'Authentication required.' }),
     (0, swagger_1.ApiNotFoundResponse)({ description: 'Payment not found for given order.' }),
     __param(0, (0, common_1.Param)('orderId', common_1.ParseIntPipe)),
     __metadata("design:type", Function),

@@ -12,10 +12,19 @@ async function bootstrap() {
         .setTitle('Kuliner API')
         .setDescription('API Documentation - Project Kuliner UKL')
         .setVersion('1.0')
-        .addBearerAuth()
+        .addBearerAuth({
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        description: 'Enter your JWT token in the format: Bearer <token>',
+    }, 'JWT')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
-    swagger_1.SwaggerModule.setup('api/docs', app, document);
+    swagger_1.SwaggerModule.setup('api/docs', app, document, {
+        swaggerOptions: {
+            persistAuthorization: true,
+        },
+    });
     const port = process.env.PORT || 3000;
     await app.listen(port);
     console.log(`App running on http://localhost:${port}`);

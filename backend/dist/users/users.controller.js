@@ -49,6 +49,7 @@ __decorate([
     (0, common_1.Get)(),
     (0, swagger_1.ApiOperation)({ summary: 'Get all users (admin only)' }),
     (0, swagger_1.ApiOkResponse)({ description: 'List of users returned successfully.' }),
+    (0, swagger_1.ApiUnauthorizedResponse)({ description: 'Authentication required.' }),
     (0, swagger_1.ApiForbiddenResponse)({ description: 'Admin role required to access this endpoint.' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
