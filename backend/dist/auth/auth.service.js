@@ -13,6 +13,7 @@ exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const prisma_service_1 = require("../prisma/prisma.service");
+const client_1 = require("@prisma/client");
 const bcrypt = require("bcryptjs");
 let AuthService = class AuthService {
     constructor(prisma, jwt) {
@@ -25,7 +26,12 @@ let AuthService = class AuthService {
             throw new common_1.ConflictException('Email sudah terdaftar');
         const hashed = await bcrypt.hash(dto.password, 10);
         const user = await this.prisma.user.create({
-            data: { name: dto.name, email: dto.email, password: hashed },
+            data: {
+                name: dto.name,
+                email: dto.email,
+                password: hashed,
+                role: dto.role ?? client_1.Role.CUSTOMER,
+            },
         });
         const token = this.signToken(user.id, user.email, user.role);
         return { message: 'Register berhasil', token, user: { id: user.id, name: user.name, email: user.email, role: user.role } };

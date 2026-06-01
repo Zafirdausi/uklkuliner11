@@ -1,0 +1,299 @@
+{
+  "info": {
+    "name": "Kuliner Backend API",
+    "description": "Postman collection untuk menguji semua CRUD endpoint di backend NestJS.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "c4a6fcda-9ba7-4eff-8d21-3de1c5dae2b6"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Test User\",\"email\":\"test.user@example.com\",\"password\":\"password123\"}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Admin User\",\"email\":\"admin@example.com\",\"password\":\"admin123\",\"role\":\"ADMIN\"}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"test.user@example.com\",\"password\":\"password123\"}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"admin@example.com\",\"password\":\"admin123\"}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/users/profile", "host": ["{{baseUrl}}"], "path": ["users", "profile"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Users (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/categories", "host": ["{{baseUrl}}"], "path": ["categories"] } },
+          "response": []
+        },
+        {
+          "name": "Get Category by ID",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/categories/{{categoryId}}", "host": ["{{baseUrl}}"], "path": ["categories", "{{categoryId}}"] } },
+          "response": []
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "{{authToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"name\":\"Makanan Utama\",\"description\":\"Kategori untuk makanan utama\"}" },
+            "url": { "raw": "{{baseUrl}}/categories", "host": ["{{baseUrl}}"], "path": ["categories"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "{{authToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"name\":\"Makanan Utama Updated\",\"description\":\"Deskripsi kategori diperbarui\"}" },
+            "url": { "raw": "{{baseUrl}}/categories/{{categoryId}}", "host": ["{{baseUrl}}"], "path": ["categories", "{{categoryId}}"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/categories/{{categoryId}}", "host": ["{{baseUrl}}"], "path": ["categories", "{{categoryId}}"] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Menus",
+      "item": [
+        {
+          "name": "Get All Menus",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/menus", "host": ["{{baseUrl}}"], "path": ["menus"] } },
+          "response": []
+        },
+        {
+          "name": "Get Menus Admin",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/menus/admin/all", "host": ["{{baseUrl}}"], "path": ["menus", "admin", "all"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Menu by ID",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/menus/{{menuId}}", "host": ["{{baseUrl}}"], "path": ["menus", "{{menuId}}"] } },
+          "response": []
+        },
+        {
+          "name": "Create Menu",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "{{authToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"categoryId\":1,\"name\":\"Nasi Goreng Spesial\",\"description\":\"Nasi goreng dengan telur dan ayam\",\"price\":25000,\"image\":\"https://example.com/nasi-goreng.jpg\",\"stock\":20}" },
+            "url": { "raw": "{{baseUrl}}/menus", "host": ["{{baseUrl}}"], "path": ["menus"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Menu",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "{{authToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"price\":27000,\"stock\":15,\"isAvailable\":true}" },
+            "url": { "raw": "{{baseUrl}}/menus/{{menuId}}", "host": ["{{baseUrl}}"], "path": ["menus", "{{menuId}}"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Menu",
+          "request": {
+            "method": "DELETE",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/menus/{{menuId}}", "host": ["{{baseUrl}}"], "path": ["menus", "{{menuId}}"] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "{{authToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"items\":[{\"menuId\":1,\"quantity\":2}]}" },
+            "url": { "raw": "{{baseUrl}}/orders", "host": ["{{baseUrl}}"], "path": ["orders"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Orders (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/orders", "host": ["{{baseUrl}}"], "path": ["orders"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get My Orders",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/orders/my-orders", "host": ["{{baseUrl}}"], "path": ["orders", "my-orders"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/orders/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "{{authToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"status\":\"PROCESSING\"}" },
+            "url": { "raw": "{{baseUrl}}/orders/{{orderId}}/status", "host": ["{{baseUrl}}"], "path": ["orders", "{{orderId}}", "status"] }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Create Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "{{authToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{\"amount\":50000,\"method\":\"CASH\"}" },
+            "url": { "raw": "{{baseUrl}}/payments/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["payments", "{{orderId}}"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment by Order",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "{{authToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/payments/{{orderId}}", "host": ["{{baseUrl}}"], "path": ["payments", "{{orderId}}"] }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "authToken", "value": "" },
+    { "key": "categoryId", "value": "1" },
+    { "key": "menuId", "value": "1" },
+    { "key": "orderId", "value": "1" }
+  ]
+}

@@ -27,6 +27,7 @@ export class UsersController {
   @Get()
   @ApiOperation({ summary: 'Get all users (admin only)' })
   @ApiOkResponse({ description: 'List of users returned successfully.' })
+  @ApiUnauthorizedResponse({ description: 'Authentication required.' })
   @ApiForbiddenResponse({ description: 'Admin role required to access this endpoint.' })
   findAll() {
     return this.usersService.findAll();

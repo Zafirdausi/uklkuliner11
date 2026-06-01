@@ -23,6 +23,7 @@ export class PaymentsController {
   @Get(':orderId')
   @ApiOperation({ summary: 'Get payment details for an order' })
   @ApiOkResponse({ description: 'Payment details returned successfully.' })
+  @ApiUnauthorizedResponse({ description: 'Authentication required.' })
   @ApiNotFoundResponse({ description: 'Payment not found for given order.' })
   findByOrder(@Param('orderId', ParseIntPipe) orderId: number) {
     return this.paymentsService.findByOrder(orderId);

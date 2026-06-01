@@ -29,6 +29,7 @@ export class OrdersController {
   @Get()
   @ApiOperation({ summary: 'Get all orders (admin only)' })
   @ApiOkResponse({ description: 'List of orders returned successfully.' })
+  @ApiUnauthorizedResponse({ description: 'Authentication required.' })
   @ApiForbiddenResponse({ description: 'Admin role required.' })
   findAll() {
     return this.ordersService.findAll();
@@ -37,6 +38,7 @@ export class OrdersController {
   @Get('my-orders')
   @ApiOperation({ summary: 'Get orders for the authenticated user' })
   @ApiOkResponse({ description: 'Authenticated user orders returned successfully.' })
+  @ApiUnauthorizedResponse({ description: 'Authentication required.' })
   findMyOrders(@GetUser('id') userId: number) {
     return this.ordersService.findMyOrders(userId);
   }
@@ -44,6 +46,7 @@ export class OrdersController {
   @Get(':id')
   @ApiOperation({ summary: 'Get a specific order by ID' })
   @ApiOkResponse({ description: 'Order returned successfully.' })
+  @ApiUnauthorizedResponse({ description: 'Authentication required.' })
   @ApiNotFoundResponse({ description: 'Order not found.' })
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.ordersService.findOne(id);
@@ -55,6 +58,7 @@ export class OrdersController {
   @ApiOperation({ summary: 'Update the status of an order (admin only)' })
   @ApiOkResponse({ description: 'Order status updated successfully.' })
   @ApiBadRequestResponse({ description: 'Invalid status data.' })
+  @ApiUnauthorizedResponse({ description: 'Authentication required.' })
   @ApiForbiddenResponse({ description: 'Admin role required.' })
   @ApiNotFoundResponse({ description: 'Order not found.' })
   updateStatus(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateOrderStatusDto) {
