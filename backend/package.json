@@ -6,7 +6,7 @@
     "build": "node ./node_modules/@nestjs/cli/bin/nest.js build",
     "start": "node dist/main",
     "start:prod": "npx prisma migrate deploy && node dist/main",
-    "start:dev": "nest start --watch",
+    "start:dev": "node ./node_modules/@nestjs/cli/bin/nest.js start --watch",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio"

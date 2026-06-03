@@ -1,0 +1,16 @@
+{
+  "name": "kuliner-backend",
+  "private": true,
+  "scripts": {
+    "start": "cd backend && npm run start",
+    "start:dev": "cd backend && npm run start:dev",
+    "start:prod": "cd backend && npm run start:prod",
+    "seed": "cd backend && npm run seed",
+    "prisma:generate": "cd backend && npm run prisma:generate",
+    "prisma:migrate": "cd backend && npm run prisma:migrate",
+    "prisma:studio": "cd backend && npm run prisma:studio"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.21"
+  }
+}

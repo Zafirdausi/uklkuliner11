@@ -27,7 +27,11 @@ export class AuthService {
     });
 
     const token = this.signToken(user.id, user.email, user.role);
-    return { message: 'Register berhasil', token, user: { id: user.id, name: user.name, email: user.email, role: user.role } };
+    return { 
+      message: 'Register berhasil', 
+      token, 
+      user: { id: user.id, name: user.name, email: user.email, role: user.role } 
+    };
   }
 
   async login(dto: LoginDto) {
@@ -38,7 +42,13 @@ export class AuthService {
     if (!match) throw new UnauthorizedException('Email atau password salah');
 
     const token = this.signToken(user.id, user.email, user.role);
-    return { message: 'Login berhasil', token, user: { id: user.id, name: user.name, email: user.email, role: user.role } };
+    
+    // Memastikan objek 'user' membawa data 'role' murni ke frontend
+    return { 
+      message: 'Login berhasil', 
+      token, 
+      user: { id: user.id, name: user.name, email: user.email, role: user.role } 
+    };
   }
 
   private signToken(userId: number, email: string, role: string) {
